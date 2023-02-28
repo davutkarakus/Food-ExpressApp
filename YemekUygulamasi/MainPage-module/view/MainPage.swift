@@ -128,9 +128,6 @@ extension MainPage:MainPresenterToViewProtocol {
         DispatchQueue.main.async { [self] in
             self.foodsCollentionView.reloadData()
         }
-        progressBar.isHidden = true
-        foodsCollentionView.isHidden = false
-        
     }
     
     
@@ -168,6 +165,8 @@ extension MainPage:UICollectionViewDelegate,UICollectionViewDataSource ,HucrePro
         if let url = URL(string: "http://kasimadalan.pe.hu/yemekler/resimler/\(yemek.yemek_resim_adi!)") {
             DispatchQueue.main.async {
                 hucre.foodImageView.kf.setImage(with: url)
+                self.progressBar.isHidden = true
+                self.foodsCollentionView.isHidden = false
             }
         }
         hucre.layer.borderColor = UIColor.lightGray.cgColor
