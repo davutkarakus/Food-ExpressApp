@@ -12,10 +12,8 @@ import FirebaseAuth
 class OnboardingInteractor :OnboardingPresenterToInteractorProtocol{
     func control() {
         if Auth.auth().currentUser != nil {
-            print("aaa")
             presenter?.presenteraVeriGonder(isSuccess: true)
         }else {
-            print("bbbb")
             presenter?.presenteraVeriGonder(isSuccess: false)
         }
     }

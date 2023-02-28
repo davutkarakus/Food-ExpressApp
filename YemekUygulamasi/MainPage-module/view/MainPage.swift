@@ -52,15 +52,15 @@ class MainPage: UIViewController ,DetailsToMainProtocol{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        setup()
-        progressBar.isHidden = false
         foodsCollentionView.isHidden = true
+        progressBar.isHidden = false
+        presenterNesnesi?.yemekleriYukle()
+        setup()
         veritabaniKopyala()
         cnb.customNavBar(navController: navigationController!, subTitle: "Hoşgeldiniz",fontSize: 35)
         self.tabBarController?.tabBar.isHidden = false
         presenterNesnesi?.sepetiYukle(kullanici_adi: user!)
         presenterNesnesi?.uploadImage(imageView: imageview)
-        presenterNesnesi?.yemekleriYukle()
         presenterNesnesi?.favoriYukle()
     }
     func CollectionViewTasarim() {
@@ -126,11 +126,11 @@ extension MainPage:MainPresenterToViewProtocol {
         
         self.foodList = yemekListesi
         DispatchQueue.main.async { [self] in
-            
             self.foodsCollentionView.reloadData()
-            foodsCollentionView.isHidden = false
-            progressBar.isHidden = true
         }
+        progressBar.isHidden = true
+        foodsCollentionView.isHidden = false
+        
     }
     
     

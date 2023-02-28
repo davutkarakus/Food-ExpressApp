@@ -81,11 +81,12 @@ class ProfilePage: UIViewController {
     }
     
     @IBAction func buttonSave(_ sender: Any) {
-        if addressTf.text == "" {
-            UtilityFunctions().simpleAlert(vc: self, title: "Hata", message: "Lütfen adresinizi giriniz.")
-        }
-        else if telTf.text == "" {
+        if telTf.text == "" {
             UtilityFunctions().simpleAlert(vc: self, title: "Hata", message: "Lütfen telefon numaranızı giriniz.")
+           
+        }
+        else if addressTf.text == "" {
+            UtilityFunctions().simpleAlert(vc: self, title: "Hata", message: "Lütfen adresinizi giriniz.")
         }else {
             presenterNesnesi?.uploadPhoto(imageView: imageView)
             presenterNesnesi?.insertUser(tel: telTf.text!, address: addressTf.text!)
